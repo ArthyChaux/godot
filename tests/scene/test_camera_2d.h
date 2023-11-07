@@ -33,6 +33,7 @@
 
 #include "scene/2d/camera_2d.h"
 
+#include "scene/main/window.h"
 #include "tests/test_macros.h"
 
 namespace TestCamera2D {

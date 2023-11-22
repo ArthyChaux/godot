@@ -35,14 +35,13 @@
 # Deolindo <deolindojvn@gmail.com>, 2023.
 # Hevinis <meauriocardoso@gmail.com>, 2023.
 # Ricardo Caetano <ricardofilipecaetano@gmail.com>, 2023.
-# Henricky Corazza Serrão <henrickyserrao@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Godot Engine properties\n"
 "Report-Msgid-Bugs-To: https://github.com/godotengine/godot\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-11-16 16:21+0000\n"
-"Last-Translator: Henricky Corazza Serrão <henrickyserrao@gmail.com>\n"
+"PO-Revision-Date: 2023-07-10 08:17+0000\n"
+"Last-Translator: Ricardo Caetano <ricardofilipecaetano@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/godot-engine/"
 "godot-properties/pt/>\n"
 "Language: pt\n"
@@ -50,7 +49,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 msgid "Application"
 msgstr "Aplicação"
@@ -181,9 +180,6 @@ msgstr "Força de Panning 2D"
 msgid "3D Panning Strength"
 msgstr "Força de Panning 3D"
 
-msgid "iOS"
-msgstr "iOS"
-
 msgid "Editor"
 msgstr "Editor"
 
@@ -192,12 +188,6 @@ msgstr "Script"
 
 msgid "Search in File Extensions"
 msgstr "Pesquisar em Extensões de Arquivo"
-
-msgid "Subwindows"
-msgstr "Subjanelas"
-
-msgid "Embed Subwindows"
-msgstr "Incorporar subjanelas"
 
 msgid "Physics"
 msgstr "Física"
@@ -231,9 +221,6 @@ msgstr "Compressão"
 
 msgid "Zstd"
 msgstr "Zstd"
-
-msgid "Compression Level"
-msgstr "Nível de Compressão"
 
 msgid "Zlib"
 msgstr "Zlib"
@@ -1789,6 +1776,9 @@ msgstr "Intervalo de Frames (ms)"
 msgid "Low Processor Mode"
 msgstr "Modo de Baixo Uso do Processador"
 
+msgid "iOS"
+msgstr "iOS"
+
 msgid "Allow High Refresh Rate"
 msgstr "Permitir Alta Taxa de Refresh"
 
@@ -1854,9 +1844,6 @@ msgstr "Emular Toque do Rato"
 
 msgid "Emulate Mouse From Touch"
 msgstr "Emular o Rato do Toque"
-
-msgid "Android"
-msgstr "Android"
 
 msgid "Mouse Cursor"
 msgstr "Cursor do Rato"
@@ -2403,6 +2390,9 @@ msgstr "Tipo de Espaço de Referência"
 
 msgid "Visibility State"
 msgstr "Estado de Visibilidade"
+
+msgid "Android"
+msgstr "Android"
 
 msgid "Android SDK Path"
 msgstr "Caminho do SDK Android"
@@ -3937,14 +3927,14 @@ msgstr "Caracteres Visiveis"
 msgid "Max Length"
 msgstr "Máx. Comprimento"
 
-msgid "Blink"
-msgstr "Piscar"
-
 msgid "Secret"
 msgstr "Secreto"
 
 msgid "Secret Character"
 msgstr "Caracteres Secretos"
+
+msgid "Blink"
+msgstr "Piscar"
 
 msgid "Underline"
 msgstr "Sublinhado"
@@ -4015,14 +4005,14 @@ msgstr "Rolagem Ativada"
 msgid "Use Hidden Tabs for Min Size"
 msgstr "Usar Esconder Tabs para Tamanho Mínimo"
 
+msgid "Syntax Highlighter"
+msgstr "Destaque de Sintaxe"
+
 msgid "Draw"
 msgstr "Desenhar"
 
 msgid "Move on Right Click"
 msgstr "Mover com Botão Direito"
-
-msgid "Syntax Highlighter"
-msgstr "Destaque de Sintaxe"
 
 msgid "Text Edit Idle Detect (sec)"
 msgstr "Detecção de ociosidade de edição de texto (seg)"
@@ -4467,6 +4457,12 @@ msgstr "Vãos de Baixa Altura Caminháveis"
 
 msgid "Bundled"
 msgstr "Agrupados"
+
+msgid "Point Texture"
+msgstr "Textura de Ponto"
+
+msgid "Normal Texture"
+msgstr "Textura Normal"
 
 msgid "Turbulence"
 msgstr "Turbulência"

@@ -81,7 +81,6 @@ class EditorExportPlatformIOS : public EditorExportPlatform {
 	Thread check_for_changes_thread;
 	SafeFlag quit_request;
 
-	static bool _check_xcode_install();
 	static void _check_for_changes_poll_thread(void *ud);
 #endif
 

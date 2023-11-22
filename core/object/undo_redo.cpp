@@ -301,8 +301,6 @@ void UndoRedo::commit_action(bool p_execute) {
 		return; //still nested
 	}
 
-	bool add_message = !merging;
-
 	if (merging) {
 		version--;
 		merging = false;
@@ -316,7 +314,7 @@ void UndoRedo::commit_action(bool p_execute) {
 	_redo(p_execute); // perform action
 	committing--;
 
-	if (add_message && callback && actions.size() > 0) {
+	if (callback && actions.size() > 0) {
 		callback(callback_ud, actions[actions.size() - 1].name);
 	}
 }
@@ -463,10 +461,6 @@ bool UndoRedo::has_undo() const {
 
 bool UndoRedo::has_redo() const {
 	return (current_action + 1) < actions.size();
-}
-
-bool UndoRedo::is_merging() const {
-	return merging;
 }
 
 uint64_t UndoRedo::get_version() const {

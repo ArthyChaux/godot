@@ -36,11 +36,6 @@
 #include "scene/resources/camera_attributes.h"
 #include "scene/resources/environment.h"
 
-#ifdef MINGW_ENABLED
-#undef near
-#undef far
-#endif
-
 class Camera3D : public Node3D {
 	GDCLASS(Camera3D, Node3D);
 

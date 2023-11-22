@@ -497,10 +497,7 @@ namespace GodotTools
 
             AddChild(new HotReloadAssemblyWatcher { Name = "HotReloadAssemblyWatcher" });
 
-            _menuPopup = new PopupMenu
-            {
-                Name = "CSharpTools",
-            };
+            _menuPopup = new PopupMenu();
             _menuPopup.Hide();
 
             AddToolSubmenuItem("C#", _menuPopup);

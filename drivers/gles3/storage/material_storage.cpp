@@ -1157,8 +1157,8 @@ MaterialStorage::MaterialStorage() {
 		actions.renames["SCREEN_PIXEL_SIZE"] = "screen_pixel_size";
 		actions.renames["FRAGCOORD"] = "gl_FragCoord";
 		actions.renames["POINT_COORD"] = "gl_PointCoord";
-		actions.renames["INSTANCE_ID"] = "gl_InstanceID";
-		actions.renames["VERTEX_ID"] = "gl_VertexID";
+		actions.renames["INSTANCE_ID"] = "gl_InstanceIndex";
+		actions.renames["VERTEX_ID"] = "gl_VertexIndex";
 
 		actions.renames["LIGHT_POSITION"] = "light_position";
 		actions.renames["LIGHT_DIRECTION"] = "light_direction";
@@ -2530,25 +2530,23 @@ LocalVector<ShaderGLES3::TextureUniformData> get_texture_uniform_data(const Vect
 /* Canvas Shader Data */
 
 void CanvasShaderData::set_code(const String &p_code) {
-	// Initialize and compile the shader.
+	// compile the shader
 
 	code = p_code;
 	valid = false;
 	ubo_size = 0;
 	uniforms.clear();
-
 	uses_screen_texture = false;
 	uses_screen_texture_mipmaps = false;
 	uses_sdf = false;
 	uses_time = false;
 
 	if (code.is_empty()) {
-		return; // Just invalid, but no error.
+		return; //just invalid, but no error
 	}
 
 	ShaderCompiler::GeneratedCode gen_code;
 
-	// Actual enum set further down after compilation.
 	int blend_modei = BLEND_MODE_MIX;
 
 	ShaderCompiler::IdentifierActions actions;
@@ -2575,8 +2573,8 @@ void CanvasShaderData::set_code(const String &p_code) {
 	}
 
 	blend_mode = BlendMode(blend_modei);
-	uses_screen_texture = gen_code.uses_screen_texture;
 	uses_screen_texture_mipmaps = gen_code.uses_screen_texture_mipmaps;
+	uses_screen_texture = gen_code.uses_screen_texture;
 
 #if 0
 	print_line("**compiling shader:");
@@ -2689,27 +2687,26 @@ GLES3::MaterialData *GLES3::_create_canvas_material_func(ShaderData *p_shader) {
 // SKY SHADER
 
 void SkyShaderData::set_code(const String &p_code) {
-	// Initialize and compile the shader.
+	//compile
 
 	code = p_code;
 	valid = false;
 	ubo_size = 0;
 	uniforms.clear();
 
-	uses_time = false;
-	uses_position = false;
-	uses_half_res = false;
-	uses_quarter_res = false;
-	uses_light = false;
-
 	if (code.is_empty()) {
-		return; // Just invalid, but no error.
+		return; //just invalid, but no error
 	}
 
 	ShaderCompiler::GeneratedCode gen_code;
-
 	ShaderCompiler::IdentifierActions actions;
 	actions.entry_point_stages["sky"] = ShaderCompiler::STAGE_FRAGMENT;
+
+	uses_time = false;
+	uses_half_res = false;
+	uses_quarter_res = false;
+	uses_position = false;
+	uses_light = false;
 
 	actions.render_mode_flags["use_half_res_pass"] = &uses_half_res;
 	actions.render_mode_flags["use_quarter_res_pass"] = &uses_quarter_res;
@@ -2831,12 +2828,24 @@ void SkyMaterialData::bind_uniforms() {
 // Scene SHADER
 
 void SceneShaderData::set_code(const String &p_code) {
-	// Initialize and compile the shader.
+	//compile
 
 	code = p_code;
 	valid = false;
 	ubo_size = 0;
 	uniforms.clear();
+
+	if (code.is_empty()) {
+		return; //just invalid, but no error
+	}
+
+	ShaderCompiler::GeneratedCode gen_code;
+
+	int blend_modei = BLEND_MODE_MIX;
+	int depth_testi = DEPTH_TEST_ENABLED;
+	int alpha_antialiasing_modei = ALPHA_ANTIALIASING_OFF;
+	int cull_modei = CULL_BACK;
+	int depth_drawi = DEPTH_DRAW_OPAQUE;
 
 	uses_point_size = false;
 	uses_alpha = false;
@@ -2846,7 +2855,6 @@ void SceneShaderData::set_code(const String &p_code) {
 	uses_discard = false;
 	uses_roughness = false;
 	uses_normal = false;
-	uses_particle_trails = false;
 	wireframe = false;
 
 	unshaded = false;
@@ -2855,37 +2863,12 @@ void SceneShaderData::set_code(const String &p_code) {
 	uses_sss = false;
 	uses_transmittance = false;
 	uses_screen_texture = false;
-	uses_screen_texture_mipmaps = false;
 	uses_depth_texture = false;
 	uses_normal_texture = false;
 	uses_time = false;
-	uses_vertex_time = false;
-	uses_fragment_time = false;
 	writes_modelview_or_projection = false;
 	uses_world_coordinates = false;
-	uses_tangent = false;
-	uses_color = false;
-	uses_uv = false;
-	uses_uv2 = false;
-	uses_custom0 = false;
-	uses_custom1 = false;
-	uses_custom2 = false;
-	uses_custom3 = false;
-	uses_bones = false;
-	uses_weights = false;
-
-	if (code.is_empty()) {
-		return; // Just invalid, but no error.
-	}
-
-	ShaderCompiler::GeneratedCode gen_code;
-
-	// Actual enums set further down after compilation.
-	int blend_modei = BLEND_MODE_MIX;
-	int depth_testi = DEPTH_TEST_ENABLED;
-	int alpha_antialiasing_modei = ALPHA_ANTIALIASING_OFF;
-	int cull_modei = CULL_BACK;
-	int depth_drawi = DEPTH_DRAW_OPAQUE;
+	uses_particle_trails = false;
 
 	ShaderCompiler::IdentifierActions actions;
 	actions.entry_point_stages["vertex"] = ShaderCompiler::STAGE_VERTEX;
@@ -2962,12 +2945,11 @@ void SceneShaderData::set_code(const String &p_code) {
 		version = MaterialStorage::get_singleton()->shaders.scene_shader.version_create();
 	}
 
-	blend_mode = BlendMode(blend_modei);
-	alpha_antialiasing_mode = AlphaAntiAliasing(alpha_antialiasing_modei);
 	depth_draw = DepthDraw(depth_drawi);
 	depth_test = DepthTest(depth_testi);
 	cull_mode = Cull(cull_modei);
-
+	blend_mode = BlendMode(blend_modei);
+	alpha_antialiasing_mode = AlphaAntiAliasing(alpha_antialiasing_modei);
 	vertex_input_mask = uint64_t(uses_normal);
 	vertex_input_mask |= uses_tangent << 1;
 	vertex_input_mask |= uses_color << 2;
@@ -2979,9 +2961,8 @@ void SceneShaderData::set_code(const String &p_code) {
 	vertex_input_mask |= uses_custom3 << 8;
 	vertex_input_mask |= uses_bones << 9;
 	vertex_input_mask |= uses_weights << 10;
-
-	uses_screen_texture = gen_code.uses_screen_texture;
 	uses_screen_texture_mipmaps = gen_code.uses_screen_texture_mipmaps;
+	uses_screen_texture = gen_code.uses_screen_texture;
 	uses_depth_texture = gen_code.uses_depth_texture;
 	uses_normal_texture = gen_code.uses_normal_roughness_texture;
 	uses_vertex_time = gen_code.uses_vertex_time;
@@ -3036,7 +3017,7 @@ void SceneShaderData::set_code(const String &p_code) {
 	ubo_offsets = gen_code.uniform_offsets;
 	texture_uniforms = gen_code.texture_uniforms;
 
-	// If any form of Alpha Antialiasing is enabled, set the blend mode to alpha to coverage.
+	// if any form of Alpha Antialiasing is enabled, set the blend mode to alpha to coverage
 	if (alpha_antialiasing_mode != ALPHA_ANTIALIASING_OFF) {
 		blend_mode = BLEND_MODE_ALPHA_TO_COVERAGE;
 	}
@@ -3112,22 +3093,19 @@ void SceneMaterialData::bind_uniforms() {
 /* Particles SHADER */
 
 void ParticlesShaderData::set_code(const String &p_code) {
-	// Initialize and compile the shader.
+	//compile
 
 	code = p_code;
 	valid = false;
 	ubo_size = 0;
 	uniforms.clear();
-
 	uses_collision = false;
-	uses_time = false;
 
 	if (code.is_empty()) {
-		return; // Just invalid, but no error.
+		return; //just invalid, but no error
 	}
 
 	ShaderCompiler::GeneratedCode gen_code;
-
 	ShaderCompiler::IdentifierActions actions;
 	actions.entry_point_stages["start"] = ShaderCompiler::STAGE_VERTEX;
 	actions.entry_point_stages["process"] = ShaderCompiler::STAGE_VERTEX;

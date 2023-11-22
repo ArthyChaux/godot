@@ -260,10 +260,6 @@ class VisualShaderEditor : public VBoxContainer {
 		COLLAPSE_ALL
 	};
 
-#ifdef MINGW_ENABLED
-#undef DELETE
-#endif
-
 	enum NodeMenuOptions {
 		ADD,
 		SEPARATOR, // ignore

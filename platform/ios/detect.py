@@ -105,7 +105,6 @@ def configure(env: "Environment"):
         detect_darwin_sdk_path("iossimulator", env)
         env.Append(ASFLAGS=["-mios-simulator-version-min=12.0"])
         env.Append(CCFLAGS=["-mios-simulator-version-min=12.0"])
-        env.Append(CPPDEFINES=["IOS_SIMULATOR"])
         env.extra_suffix = ".simulator" + env.extra_suffix
     else:
         detect_darwin_sdk_path("ios", env)

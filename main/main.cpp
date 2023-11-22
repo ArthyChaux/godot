@@ -1753,12 +1753,15 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 		String driver_hints_egl = "";
 #ifdef GLES3_ENABLED
 		driver_hints = "opengl3";
-		driver_hints_angle = "opengl3,opengl3_angle"; // macOS, Windows.
-		driver_hints_egl = "opengl3,opengl3_es"; // Linux.
+		driver_hints_angle = "opengl3,opengl3_angle";
+		driver_hints_egl = "opengl3,opengl3_es";
 #endif
 
 		String default_driver = driver_hints.get_slice(",", 0);
-		String default_driver_macos = driver_hints_angle.get_slice(",", 1);
+		String default_driver_macos = default_driver;
+#if defined(GLES3_ENABLED) && defined(EGL_STATIC) && defined(MACOS_ENABLED)
+		default_driver_macos = "opengl3_angle"; // Default to ANGLE if it's built-in.
+#endif
 
 		GLOBAL_DEF_RST_NOVAL("rendering/gl_compatibility/driver", default_driver);
 		GLOBAL_DEF_RST_NOVAL(PropertyInfo(Variant::STRING, "rendering/gl_compatibility/driver.windows", PROPERTY_HINT_ENUM, driver_hints_angle), default_driver);
@@ -1771,30 +1774,8 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 		GLOBAL_DEF_RST("rendering/gl_compatibility/nvidia_disable_threaded_optimization", true);
 		GLOBAL_DEF_RST("rendering/gl_compatibility/fallback_to_angle", true);
 		GLOBAL_DEF_RST("rendering/gl_compatibility/fallback_to_native", true);
-		GLOBAL_DEF_RST("rendering/gl_compatibility/fallback_to_gles", true);
 
-		Array device_blocklist;
-
-#define BLOCK_DEVICE(m_vendor, m_name)      \
-	{                                       \
-		Dictionary device;                  \
-		device["vendor"] = m_vendor;        \
-		device["name"] = m_name;            \
-		device_blocklist.push_back(device); \
-	}
-
-		// AMD GPUs.
-		BLOCK_DEVICE("ATI", "AMD Radeon(TM) R2 Graphics");
-		BLOCK_DEVICE("ATI", "AMD Radeon(TM) R3 Graphics");
-		BLOCK_DEVICE("ATI", "AMD Radeon HD 8400 / R3 Series");
-		BLOCK_DEVICE("ATI", "AMD Radeon R5 M200 Series");
-		BLOCK_DEVICE("ATI", "AMD Radeon R5 M230 Series");
-		BLOCK_DEVICE("ATI", "AMD Radeon R5 M255");
-		BLOCK_DEVICE("AMD", "AMD Radeon (TM) R5 M330");
-
-#undef BLOCK_DEVICE
-
-		GLOBAL_DEF_RST_NOVAL(PropertyInfo(Variant::ARRAY, "rendering/gl_compatibility/force_angle_on_devices", PROPERTY_HINT_ARRAY_TYPE, vformat("%s/%s:%s", Variant::DICTIONARY, PROPERTY_HINT_NONE, String())), device_blocklist);
+		GLOBAL_DEF_RST(PropertyInfo(Variant::ARRAY, "rendering/gl_compatibility/force_angle_on_devices", PROPERTY_HINT_ARRAY_TYPE, vformat("%s/%s:%s", Variant::DICTIONARY, PROPERTY_HINT_NONE, String())), Array());
 	}
 
 	// Start with RenderingDevice-based backends. Should be included if any RD driver present.
@@ -2125,9 +2106,6 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 
 	if (frame_delay == 0) {
 		frame_delay = GLOBAL_DEF(PropertyInfo(Variant::INT, "application/run/frame_delay_msec", PROPERTY_HINT_RANGE, "0,100,1,or_greater"), 0);
-		if (Engine::get_singleton()->is_editor_hint()) {
-			frame_delay = 0;
-		}
 	}
 
 	if (audio_output_latency >= 1) {

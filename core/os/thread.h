@@ -42,14 +42,7 @@
 #include "core/templates/safe_refcount.h"
 #include "core/typedefs.h"
 
-#ifdef MINGW_ENABLED
-#define MINGW_STDTHREAD_REDUNDANCY_WARNING
-#include "thirdparty/mingw-std-threads/mingw.thread.h"
-#define THREADING_NAMESPACE mingw_stdthread
-#else
 #include <thread>
-#define THREADING_NAMESPACE std
-#endif
 
 class String;
 
@@ -89,7 +82,7 @@ private:
 	ID id = UNASSIGNED_ID;
 	static SafeNumeric<uint64_t> id_counter;
 	static thread_local ID caller_id;
-	THREADING_NAMESPACE::thread thread;
+	std::thread thread;
 
 	static void callback(ID p_caller_id, const Settings &p_settings, Thread::Callback p_callback, void *p_userdata);
 

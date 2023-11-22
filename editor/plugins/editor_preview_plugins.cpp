@@ -295,10 +295,6 @@ void EditorMaterialPreviewPlugin::_preview_done() {
 	preview_done.post();
 }
 
-void EditorMaterialPreviewPlugin::abort() {
-	preview_done.post();
-}
-
 bool EditorMaterialPreviewPlugin::handles(const String &p_type) const {
 	return ClassDB::is_parent_class(p_type, "Material"); // Any material.
 }
@@ -694,10 +690,6 @@ void EditorMeshPreviewPlugin::_preview_done() {
 	preview_done.post();
 }
 
-void EditorMeshPreviewPlugin::abort() {
-	preview_done.post();
-}
-
 bool EditorMeshPreviewPlugin::handles(const String &p_type) const {
 	return ClassDB::is_parent_class(p_type, "Mesh"); // Any mesh.
 }
@@ -812,10 +804,6 @@ void EditorFontPreviewPlugin::_generate_frame_started() {
 }
 
 void EditorFontPreviewPlugin::_preview_done() {
-	preview_done.post();
-}
-
-void EditorFontPreviewPlugin::abort() {
 	preview_done.post();
 }
 

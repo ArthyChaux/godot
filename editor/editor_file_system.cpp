@@ -261,8 +261,7 @@ void EditorFileSystem::_scan_filesystem() {
 					cpath = name;
 
 				} else {
-					// The last section (deps) may contain the same splitter, so limit the maxsplit to 8 to get the complete deps.
-					Vector<String> split = l.split("::", true, 8);
+					Vector<String> split = l.split("::");
 					ERR_CONTINUE(split.size() < 9);
 					String name = split[0];
 					String file;
@@ -2369,9 +2368,7 @@ bool EditorFileSystem::_should_skip_directory(const String &p_path) {
 
 	if (FileAccess::exists(p_path.path_join("project.godot"))) {
 		// Skip if another project inside this.
-		if (EditorFileSystem::get_singleton()->first_scan) {
-			WARN_PRINT_ONCE(vformat("Detected another project.godot at %s. The folder will be ignored.", p_path));
-		}
+		WARN_PRINT_ONCE(vformat("Detected another project.godot at %s. The folder will be ignored.", p_path));
 		return true;
 	}
 

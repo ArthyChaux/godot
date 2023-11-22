@@ -66,17 +66,13 @@
 # Robbe Vanslambrouck <robbevsb.dev@gmail.com>, 2023.
 # Lars-Janssen <janssen.lars@gmail.com>, 2023.
 # The Bulldozer <maurice.vanrumbeke@gmail.com>, 2023.
-# Raymon Zutekouw <me@raymon.dev>, 2023.
-# Nicolai Van der Storm <nicolai@nvds.be>, 2023.
-# Gaetan Deglorie <gaetan@rhinox.training>, 2023.
-# Bert Heymans <bert.heymans@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Godot Engine editor interface\n"
 "Report-Msgid-Bugs-To: https://github.com/godotengine/godot\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-11-18 06:21+0000\n"
-"Last-Translator: Bert Heymans <bert.heymans@gmail.com>\n"
+"PO-Revision-Date: 2023-10-01 21:58+0000\n"
+"Last-Translator: The Bulldozer <maurice.vanrumbeke@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/godot-engine/godot/"
 "nl/>\n"
 "Language: nl\n"
@@ -84,7 +80,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 msgid "Unset"
 msgstr "Niet ingesteld"
@@ -120,7 +116,7 @@ msgid "Mouse Thumb Button 2"
 msgstr "Muisduimknop 2"
 
 msgid "Button"
-msgstr "Knop"
+msgstr "Button (Knop)"
 
 msgid "Double Click"
 msgstr "Dubbel Klik"
@@ -248,8 +244,8 @@ msgstr "Scherm %s op (%s) met %s aanraakpunten"
 msgid ""
 "Screen dragged with %s touch points at position (%s) with velocity of (%s)"
 msgstr ""
-"Scherm is gesleept met %s aanrakingspunten op positie (%s) met een snelheid "
-"van (%s)"
+"Scherm is gesleept met %s aanraakpunten op positie (%s) met een snelheid van "
+"(%s)"
 
 msgid "Magnify Gesture at (%s) with factor %s"
 msgstr "Vergrotingsgebaar op (%s) met factor %s"
@@ -296,9 +292,6 @@ msgstr "Pagina Omhoog"
 msgid "Page Down"
 msgstr "Pagina Omlaag"
 
-msgid "Home"
-msgstr "Home"
-
 msgid "End"
 msgstr "Einde"
 
@@ -323,9 +316,6 @@ msgstr "Nieuwe regel"
 msgid "New Blank Line"
 msgstr "Nieuwe lege regel"
 
-msgid "Indent"
-msgstr "Inspringen"
-
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -334,9 +324,6 @@ msgstr "Woord Verwijderen"
 
 msgid "Caret Page Up"
 msgstr "Caret Pagina Omhoog"
-
-msgid "Caret Page Down"
-msgstr "Caret Pagina Omlaag"
 
 msgid "Scroll Up"
 msgstr "Scroll Omhoog"
@@ -934,6 +921,15 @@ msgstr "Sluiten"
 msgid "Connect"
 msgstr "Verbinden"
 
+msgid "Class:"
+msgstr "Klasse:"
+
+msgid "Signal:"
+msgstr "Signaal:"
+
+msgid "No description."
+msgstr "Geen omschrijving."
+
 msgid "Connect '%s' to '%s'"
 msgstr "Verbind '%s' met '%s'"
 
@@ -957,7 +953,7 @@ msgstr ""
 "Weet je zeker dat je alle verbindingen met signaal \"%s\" wilt verwijderen?"
 
 msgid "Signals"
-msgstr "Signaal:"
+msgstr "Signalen"
 
 msgid "Filter Signals"
 msgstr "Filter Signalen"
@@ -1030,7 +1026,7 @@ msgid "Save Branch as Scene"
 msgstr "Tak opslaan als scène"
 
 msgid "Copy Node Path"
-msgstr "Kopieer het knoop-pad"
+msgstr "Knooppad kopiëren"
 
 msgid "Instance:"
 msgstr "Instantie:"
@@ -1245,7 +1241,7 @@ msgid "Dependencies"
 msgstr "Afhankelijkheden"
 
 msgid "Resource"
-msgstr "Bronnen"
+msgstr "Bron"
 
 msgid "Path"
 msgstr "Pad"
@@ -1261,11 +1257,6 @@ msgstr "Afhankelijkhedeneditor"
 
 msgid "Search Replacement Resource:"
 msgstr "Bronvervanging zoeken:"
-
-msgid "Open Scene"
-msgid_plural "Open Scenes"
-msgstr[0] "Scène openen"
-msgstr[1] "Scènes openen"
 
 msgid "Open"
 msgstr "Openen"
@@ -1364,6 +1355,21 @@ msgstr "Gouden Sponsors"
 
 msgid "Silver Sponsors"
 msgstr "Zilveren Sponsors"
+
+msgid "Bronze Sponsors"
+msgstr "Bronzen Sponsors"
+
+msgid "Mini Sponsors"
+msgstr "Mini Sponsoren"
+
+msgid "Gold Donors"
+msgstr "Gouden Donors"
+
+msgid "Silver Donors"
+msgstr "Zilveren Donors"
+
+msgid "Bronze Donors"
+msgstr "Bronzen Donors"
 
 msgid "Donors"
 msgstr "Donoren"
@@ -1793,16 +1799,8 @@ msgstr ""
 msgid "(Re)Importing Assets"
 msgstr "Bronnen (her)importeren"
 
-msgid "This value is an integer composed as a bitmask of the following flags."
-msgstr ""
-"Deze waarde is een geheel getal dat bestaat uit een bitmask van de volgende "
-"opties."
-
 msgid "Top"
 msgstr "Boven"
-
-msgid "Class:"
-msgstr "Klasse:"
 
 msgid "Inherits:"
 msgstr "Erven:"
@@ -1874,12 +1872,6 @@ msgstr "Methodebeschrijvingen"
 msgid "Operator Descriptions"
 msgstr "Operatorbeschrijvingen"
 
-msgid "Property:"
-msgstr "Eigenschap:"
-
-msgid "Signal:"
-msgstr "Signaal:"
-
 msgid "%d match."
 msgstr "%d overeenkomst(en) gevonden."
 
@@ -1937,15 +1929,13 @@ msgstr "Eigenschap"
 msgid "Theme Property"
 msgstr "Thema-eigenschap"
 
+msgid "Property:"
+msgstr "Eigenschap:"
+
 msgid "Pinning a value forces it to be saved even if it's equal to the default."
 msgstr ""
 "Als je een waarde vast plaatst, dan zal deze gedwongen worden opgeslagen, "
 "zelf als het overeenkomt met de standaard waarde."
-
-msgid "(%d change)"
-msgid_plural "(%d changes)"
-msgstr[0] "(%d wijziging)"
-msgstr[1] "(%d wijzigingen)"
 
 msgid "Move Up"
 msgstr "Plaats Omhoog"
@@ -2357,9 +2347,6 @@ msgstr "Project"
 msgid "Project Settings..."
 msgstr "Projectinstellingen..."
 
-msgid "Project Settings"
-msgstr "Project Instellingen"
-
 msgid "Version Control"
 msgstr "Versiebeheer"
 
@@ -2382,7 +2369,7 @@ msgid "Reload Current Project"
 msgstr "Huidig Project Herladen"
 
 msgid "Quit to Project List"
-msgstr "Terug naar Project Overzicht"
+msgstr "Sluit af naar Projectlijst"
 
 msgid "Editor"
 msgstr "Editor"
@@ -2531,7 +2518,7 @@ msgid "Select Current"
 msgstr "Huidige Selecteren"
 
 msgid "Open 2D Editor"
-msgstr "Open 2D Editor"
+msgstr "Open 2D Bewerker"
 
 msgid "Open 3D Editor"
 msgstr "Open 3D Editor"
@@ -2645,9 +2632,6 @@ msgstr "Snel Laden"
 
 msgid "Make Unique"
 msgstr "Maak Uniek"
-
-msgid "Save As..."
-msgstr "Opslaan Als..."
 
 msgid "Show in FileSystem"
 msgstr "Weergeven in Bestandssysteem"
@@ -2874,11 +2858,11 @@ msgstr ""
 msgid "Runnable"
 msgstr "Uitvoerbaar"
 
-msgid "Delete preset '%s'?"
-msgstr "Verwijder voorinstelling '%s'?"
-
 msgid "Resources to export:"
 msgstr "Bronnen om te exporteren:"
+
+msgid "Delete preset '%s'?"
+msgstr "Verwijder voorinstelling '%s'?"
 
 msgid "Release"
 msgstr "Release"
@@ -2912,7 +2896,7 @@ msgid "Resources"
 msgstr "Bronnen"
 
 msgid "Export all resources in the project"
-msgstr "Exporteer alle bestanden naar het project"
+msgstr "Exporteer alle bronnen in het project"
 
 msgid "Export selected scenes (and dependencies)"
 msgstr "Exporteer geselecteerde scènes (en afhankelijkheden)"
@@ -2999,18 +2983,8 @@ msgstr "Fout bij het verplaatsen:"
 msgid "Error duplicating:"
 msgstr "Fout bij het dupliceren:"
 
-msgid "Failed to save resource at %s: %s"
-msgstr "Opslaan van bron mislukt op %s: %s"
-
 msgid "A file or folder with this name already exists."
 msgstr "Er bestaat al een bestand of map met deze naam."
-
-msgid ""
-"The following files or folders conflict with items in the target location "
-"'%s':"
-msgstr ""
-"De volgende bestanden of folders conflicteren met de bestanden op de "
-"doellocatie '%s':"
 
 msgid "Duplicating file:"
 msgstr "Bestand dupliceren:"
@@ -3020,6 +2994,9 @@ msgstr "Folder dupliceren:"
 
 msgid "New Inherited Scene"
 msgstr "Nieuwe geërfde scène"
+
+msgid "Set As Main Scene"
+msgstr "Instellen als startscène"
 
 msgid "Open Scenes"
 msgstr "Scènes openen"
@@ -3084,6 +3061,9 @@ msgstr "Hernoemen..."
 msgid "Re-Scan Filesystem"
 msgstr "Bestandssysteem opnieuw inlezen"
 
+msgid "Toggle Split Mode"
+msgstr "Splitsmodus omschakelen"
+
 msgid ""
 "Scanning Files,\n"
 "Please Wait..."
@@ -3098,7 +3078,7 @@ msgid "Create Script"
 msgstr "Creëer Script"
 
 msgid "Find in Files"
-msgstr "In bestanden vinden"
+msgstr "In bestanden zoeken"
 
 msgid "Find:"
 msgstr "Zoeken:"
@@ -3429,6 +3409,9 @@ msgstr "Laad een bestaande bron van de schijf en bewerk het."
 msgid "Save the currently edited resource."
 msgstr "De zojuist bewerkte bron opslaan."
 
+msgid "Save As..."
+msgstr "Opslaan Als..."
+
 msgid "Copy Resource"
 msgstr "Bron kopiëren"
 
@@ -3532,7 +3515,7 @@ msgid "Remove Polygon And Point"
 msgstr "Veelhoek en punt verwijderen"
 
 msgid "Add Animation"
-msgstr "Animatie toevoegen"
+msgstr "Voeg Animatie Toe"
 
 msgid "Add %s"
 msgstr "Voeg %s Toe"
@@ -3801,14 +3784,14 @@ msgstr "Animatiespeler vastzetten"
 msgid "Error!"
 msgstr "Fout!"
 
-msgid "Cross-Animation Blend Times"
-msgstr "Cross-animatie mixtijden"
-
 msgid "Blend Times:"
 msgstr "Overgangstijden:"
 
 msgid "Next (Auto Queue):"
 msgstr "Volgende (Auto wachtrij):"
+
+msgid "Cross-Animation Blend Times"
+msgstr "Cross-animatie mixtijden"
 
 msgid "Move Node"
 msgstr "Knoop verplaatsen"
@@ -3859,7 +3842,7 @@ msgid "Delete Selected"
 msgstr "Geselecteerde Verwijderen"
 
 msgid "AnimationTree"
-msgstr "AnimationTree"
+msgstr "AnimatieBoom"
 
 msgid "Contents:"
 msgstr "Inhoud:"
@@ -4161,7 +4144,7 @@ msgid "Use Grid Snap"
 msgstr "Kleven aan raster"
 
 msgid "Snapping Options"
-msgstr "Opties voor automatisch schikken"
+msgstr "Kleefinstellingen"
 
 msgid "Use Rotation Snap"
 msgstr "In stappen draaien"
@@ -4229,11 +4212,8 @@ msgstr "Toon beeldvenster"
 msgid "Show Group And Lock Icons"
 msgstr "Toon Groep en Slot Iconen"
 
-msgid "Center Selection"
-msgstr "Midden Selectie"
-
 msgid "Frame Selection"
-msgstr "Frame Selectie"
+msgstr "Raam Selectie"
 
 msgid "Preview Canvas Scale"
 msgstr "Voorbeeld Canvas Schaal"
@@ -4297,9 +4277,6 @@ msgstr "Wijzig standaard type"
 
 msgid "Set Handle"
 msgstr "Stel Handgreep In"
-
-msgid "Custom"
-msgstr "Zelfgedefinieerd"
 
 msgid "Top Left"
 msgstr "Linksboven"
@@ -4527,9 +4504,6 @@ msgstr "Genereer Zichtbaarheid Rechthoek"
 msgid "Clear Emission Mask"
 msgstr "Emissiemasker wissen"
 
-msgid "GPUParticles2D"
-msgstr "GPUParticles2D"
-
 msgid "Generation Time (sec):"
 msgstr "Genereer Tijd (sec):"
 
@@ -4565,9 +4539,6 @@ msgstr "Emissiebron:"
 
 msgid "Generate Visibility AABB"
 msgstr "Genereer Zichtbaarheid AABB"
-
-msgid "GPUParticles3D"
-msgstr "GPUParticles3D"
 
 msgid "Create Occluder Polygon"
 msgstr "Creëer Occluder Polygon"
@@ -4968,7 +4939,7 @@ msgid "Switch Perspective/Orthogonal View"
 msgstr "Schakel Perspectief/Orthogonaal Zicht"
 
 msgid "Insert Animation Key"
-msgstr "Voer Animation Key in"
+msgstr "Animatiesleutel invoegen"
 
 msgid "Focus Origin"
 msgstr "Focus op Oorsprongspunt"
@@ -4998,22 +4969,22 @@ msgid "Transform Dialog..."
 msgstr "Transformatie Dialoog..."
 
 msgid "1 Viewport"
-msgstr "1 Beeldvenster"
+msgstr "1 beeldvenster"
 
 msgid "2 Viewports"
-msgstr "2 Beeldvensters"
+msgstr "2 beeldvensters"
 
 msgid "2 Viewports (Alt)"
-msgstr "2 Beeldvensters (Alt)"
+msgstr "2 beeldvensters (alt)"
 
 msgid "3 Viewports"
-msgstr "3 Beeldvensters"
+msgstr "3 beeldvensters"
 
 msgid "3 Viewports (Alt)"
-msgstr "3 Beeldvensters (Alt)"
+msgstr "3 beeldvensters (alt)"
 
 msgid "4 Viewports"
-msgstr "4 Beeldvensters"
+msgstr "4 beeldvensters"
 
 msgid "Gizmos"
 msgstr "Gizmos"
@@ -5028,7 +4999,7 @@ msgid "Settings..."
 msgstr "Instellingen..."
 
 msgid "Snap Settings"
-msgstr "Instellingen voor automatisch schikken"
+msgstr "Kleefinstellingen"
 
 msgid "Translate Snap:"
 msgstr "Kleefafstand:"
@@ -5389,9 +5360,6 @@ msgstr "Alfabetisch sorteren van de methodelijst omschakelen."
 msgid "Sort"
 msgstr "Sorteren"
 
-msgid "Next Script"
-msgstr "Volgende Script"
-
 msgid "File"
 msgstr "Bestand"
 
@@ -5491,7 +5459,7 @@ msgid "Line"
 msgstr "Regel"
 
 msgid "Go to Function"
-msgstr "Ga naar de Functie"
+msgstr "Ga Naar Functie"
 
 msgid "Lookup Symbol"
 msgstr "Symbool opzoeken"
@@ -5853,17 +5821,8 @@ msgstr "Horizontaal omdraaien"
 msgid "Flip Vertically"
 msgstr "Verticaal omdraaien"
 
-msgid "Picker"
-msgstr "Kiezer"
-
-msgid "Selection"
-msgstr "Selectie"
-
 msgid "Scattering:"
 msgstr "Verspreiding:"
-
-msgid "Rendering"
-msgstr "Renderen"
 
 msgid "Yes"
 msgstr "Ja"
@@ -6302,9 +6261,6 @@ msgstr "Geeft de tangens hyperbolicus van de parameter."
 
 msgid "Finds the truncated value of the parameter."
 msgstr "Zoekt de afgeronde waarde van de parameter."
-
-msgid "Converts screen UV to a SDF."
-msgstr "Zet de scherm UV om naar een SDF."
 
 msgid "Perform the cubic texture lookup."
 msgstr "Voer cubic texture lookup uit."
@@ -6854,6 +6810,14 @@ msgstr ""
 "Het uitzetten van \"editable_instance\" zal ervoor zorgen dat alle "
 "eigenschappen van deze knoop naar hun standaardwaarde worden teruggezet."
 
+msgid ""
+"Enabling \"Load As Placeholder\" will disable \"Editable Children\" and cause "
+"all properties of the node to be reverted to their default."
+msgstr ""
+"Het aanzetten van \"Als plaatsvervanger laden\" zal \"Bewerkbare kinderen\" "
+"uitzetten en ervoor zorgen dat alle eigenschappen van deze knoop naar hun "
+"standaardwaarde worden teruggezet."
+
 msgid "Make Local"
 msgstr "Maak locaal"
 
@@ -6908,6 +6872,9 @@ msgstr "Erfenis wissen"
 
 msgid "Editable Children"
 msgstr "Bewerkbare kinderen"
+
+msgid "Load As Placeholder"
+msgstr "Laden als"
 
 msgid ""
 "Cannot attach a script: there are no languages registered.\n"
@@ -7258,6 +7225,13 @@ msgstr "Bouwen van Android Project (gradle)"
 msgid "Moving output"
 msgstr "Output verplaatsen"
 
+msgid ""
+"Unable to copy and rename export file, check gradle project directory for "
+"outputs."
+msgstr ""
+"Niet in staat om het export bestand te kopiëren en hernoemen. Controleer de "
+"gradle project folder voor outputs."
+
 msgid "Invalid Identifier:"
 msgstr "Ongeldige identifier:"
 
@@ -7266,9 +7240,6 @@ msgstr "Identifier ontbreekt."
 
 msgid "The character '%s' is not allowed in Identifier."
 msgstr "Het karakter '%s' is geen geldige identifier."
-
-msgid "Exporting for macOS"
-msgstr "Exporteren voor macOS"
 
 msgid "Stop HTTP Server"
 msgstr "Stop HTTP Server"

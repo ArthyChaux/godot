@@ -515,24 +515,6 @@ error metrics instead of a combination of distance and attribute errors. Patches
 for both changes can be found in the `patches` directory.
 
 
-## mingw-std-threads
-
-- Upstream: https://github.com/meganz/mingw-std-threads
-- Version: git (c931bac289dd431f1dd30fc4a5d1a7be36668073, 2023)
-- License: BSD-2-clause
-
-Files extracted from upstream repository:
-
-- `LICENSE`
-- `mingw.condition_variable.h`
-- `mingw.invoke.h`
-- `mingw.mutex.h`
-- `mingw.shared_mutex.h`
-- `mingw.thread.h`
-
-Once copied, apply `no_except.patch` (needed because Godot is built without exceptions).
-
-
 ## minimp3
 
 - Upstream: https://github.com/lieff/minimp3
@@ -628,7 +610,7 @@ Collection of single-file libraries used in Godot components.
   * License: MIT
 - `r128.{c,h}`
   * Upstream: https://github.com/fahickman/r128
-  * Version: git (6fc177671c47640d5bb69af10cf4ee91050015a1, 2023)
+  * Version: 1.4.4 (cf2e88fc3e7d7dfe99189686f914874cd0bda15e, 2020)
   * License: Public Domain or Unlicense
 - `smaz.{c,h}`
   * Upstream: https://github.com/antirez/smaz

@@ -41,16 +41,22 @@ namespace TestCamera2D {
 TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
 	Camera2D *test_camera = memnew(Camera2D);
 
-	SUBCASE("AnchroMode") {
+	SUBCASE("AnchorMode") {
 		test_camera->set_anchor_mode(Camera2D::AnchorMode::ANCHOR_MODE_FIXED_TOP_LEFT);
 		CHECK(test_camera->get_anchor_mode() == Camera2D::AnchorMode::ANCHOR_MODE_FIXED_TOP_LEFT);
-
-
-
+		test_camera->set_anchor_mode(Camera2D::AnchorMode::ANCHOR_MODE_DRAG_CENTER);
+		CHECK(test_camera->get_anchor_mode() == Camera2D::AnchorMode::ANCHOR_MODE_DRAG_CENTER);
+	}
+	SUBCASE("ProcessCallback") {
+		test_camera->set_process_callback(Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_PHYSICS);
+		CHECK(test_camera->get_process_callback() == Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_PHYSICS);
+		test_camera->set_process_callback(Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_IDLE);
+		CHECK(test_camera->get_process_callback() == Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_IDLE);
 	}
 
 
 
+	memdelete(test_camera);
 }
 
 

@@ -158,6 +158,33 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
 	memdelete(test_camera);
 }
 
+TEST_CASE("[SceneTree][Camera2D] Position queries") {
+    Camera2D *test_camera = memnew(Camera2D);
+    SubViewport *mock_viewport = memnew(SubViewport);
+    mock_viewport->set_size(Vector2(400, 200));
+    SceneTree::get_singleton()->get_root()->add_child(mock_viewport);
+    mock_viewport->add_child(test_camera);
+    test_camera->set_global_position(Vector2(0, 0));
+    test_camera->set_global_rotation(0);
+
+    SUBCASE("Current") {
+        test_camera->set_enabled(true);
+        test_camera->make_current();
+        CHECK(test_camera->is_current());
+		test_camera->clear_current();
+		CHECK_FALSE(test_camera->is_current());
+        
+        /* Error -> Should I catch it ? Delete those line ?
+        test_camera->set_enabled(false);
+        test_camera->make_current();
+        CHECK_FALSE(test_camera->is_current());
+        */
+    }
+
+
+	memdelete(test_camera);
+}
+
 
 } // namespace TestCamera2D
 

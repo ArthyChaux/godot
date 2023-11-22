@@ -53,8 +53,107 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
 		test_camera->set_process_callback(Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_IDLE);
 		CHECK(test_camera->get_process_callback() == Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_IDLE);
 	}
+	SUBCASE("Drag") {
+		constexpr float drag_left_margin = 0.8f;
+        constexpr float drag_top_margin = 0.8f;
+        constexpr float drag_right_margin = 0.8f;
+        constexpr float drag_bottom_margin = 0.8f;
+        constexpr float drag_horizontal_offset1 = 0.5f;
+        constexpr float drag_horizontal_offset2 = -0.5f;
+        constexpr float drag_vertical_offset1 = 0.5f;
+        constexpr float drag_vertical_offset2 = -0.5f;
+		test_camera->set_drag_margin(SIDE_LEFT, drag_left_margin);
+        CHECK(test_camera->get_drag_margin(SIDE_LEFT) == drag_left_margin);
+        test_camera->set_drag_margin(SIDE_TOP, drag_top_margin);
+        CHECK(test_camera->get_drag_margin(SIDE_TOP) == drag_top_margin);
+        test_camera->set_drag_margin(SIDE_RIGHT, drag_right_margin);
+        CHECK(test_camera->get_drag_margin(SIDE_RIGHT) == drag_right_margin);
+        test_camera->set_drag_margin(SIDE_BOTTOM, drag_bottom_margin);
+        CHECK(test_camera->get_drag_margin(SIDE_BOTTOM) == drag_bottom_margin);
+        test_camera->set_drag_horizontal_enabled(true);
+        CHECK(test_camera->is_drag_horizontal_enabled());
+        test_camera->set_drag_horizontal_enabled(false);
+        CHECK_FALSE(test_camera->is_drag_horizontal_enabled());
+        test_camera->set_drag_horizontal_offset(drag_horizontal_offset1);
+        CHECK(test_camera->get_drag_horizontal_offset() == drag_horizontal_offset1);
+        test_camera->set_drag_horizontal_offset(drag_horizontal_offset2);
+        CHECK(test_camera->get_drag_horizontal_offset() == drag_horizontal_offset2);
+        test_camera->set_drag_vertical_enabled(true);
+        CHECK(test_camera->is_drag_vertical_enabled());
+        test_camera->set_drag_vertical_enabled(false);
+        CHECK_FALSE(test_camera->is_drag_vertical_enabled());
+        test_camera->set_drag_vertical_offset(drag_vertical_offset1);
+        CHECK(test_camera->get_drag_vertical_offset() == drag_vertical_offset1);
+        test_camera->set_drag_vertical_offset(drag_vertical_offset2);
+        CHECK(test_camera->get_drag_vertical_offset() == drag_vertical_offset2);
+    }
+    SUBCASE("Drawing") {
+        test_camera->set_margin_drawing_enabled(true);
+        CHECK(test_camera->is_margin_drawing_enabled());
+        test_camera->set_margin_drawing_enabled(false);
+        CHECK_FALSE(test_camera->is_margin_drawing_enabled());
+        test_camera->set_limit_drawing_enabled(true);
+        CHECK(test_camera->is_limit_drawing_enabled());
+        test_camera->set_limit_drawing_enabled(false);
+        CHECK_FALSE(test_camera->is_limit_drawing_enabled());
+        test_camera->set_screen_drawing_enabled(true);
+        CHECK(test_camera->is_screen_drawing_enabled());
+        test_camera->set_screen_drawing_enabled(false);
+        CHECK_FALSE(test_camera->is_screen_drawing_enabled());
+    }
+    SUBCASE("Enabled") {
+        test_camera->set_enabled(true);
+        CHECK(test_camera->is_enabled());
+        test_camera->set_enabled(false);
+        CHECK_FALSE(test_camera->is_enabled());
+    }
+    SUBCASE("Rotation") {
+        constexpr float rotation_smoothing_speed = 20.0f;
+        test_camera->set_ignore_rotation(true);
+        CHECK(test_camera->is_ignoring_rotation());
+        test_camera->set_ignore_rotation(false);
+        CHECK_FALSE(test_camera->is_ignoring_rotation());
+        test_camera->set_rotation_smoothing_enabled(true);
+        CHECK(test_camera->is_rotation_smoothing_enabled());
+        test_camera->set_rotation_smoothing_speed(rotation_smoothing_speed);
+        CHECK(test_camera->get_rotation_smoothing_speed() == rotation_smoothing_speed);
+    }
+    SUBCASE("Zoom") {
+        const Vector2 zoom = Vector2(4, 4);
+        test_camera->set_zoom(zoom);
+        CHECK(test_camera->get_zoom() == zoom);
+    }
+    SUBCASE("Offset") {
+        const Vector2 offset = Vector2(100, 100);
+        test_camera->set_offset(offset);
+        CHECK(test_camera->get_offset() == offset);
+    }
+    SUBCASE("Limit") {
+        constexpr int limit_left = 100;
+        constexpr int limit_top = 100;
+        constexpr int limit_right = 100;
+        constexpr int limit_bottom = 100;
+        test_camera->set_limit_smoothing_enabled(true);
+        CHECK(test_camera->is_limit_smoothing_enabled());
+        test_camera->set_limit_smoothing_enabled(false);
+        CHECK_FALSE(test_camera->is_limit_smoothing_enabled());
+        test_camera->set_limit(SIDE_LEFT, limit_left);
+        CHECK(test_camera->get_limit(SIDE_LEFT) == limit_left);
+        test_camera->set_limit(SIDE_TOP, limit_top);
+        CHECK(test_camera->get_limit(SIDE_TOP) == limit_top);
+        test_camera->set_limit(SIDE_RIGHT, limit_right);
+        CHECK(test_camera->get_limit(SIDE_RIGHT) == limit_right);
+        test_camera->set_limit(SIDE_BOTTOM, limit_bottom);
+        CHECK(test_camera->get_limit(SIDE_BOTTOM) == limit_bottom);
 
-
+    }
+    SUBCASE("Position") {
+        constexpr float smoothing_speed = 20.0f;
+        test_camera->set_position_smoothing_enabled(true);
+        CHECK(test_camera->is_position_smoothing_enabled());
+        test_camera->set_position_smoothing_speed(smoothing_speed);
+        CHECK(test_camera->get_position_smoothing_speed() == smoothing_speed);
+    }
 
 	memdelete(test_camera);
 }

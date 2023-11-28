@@ -174,7 +174,6 @@ TEST_CASE("[SceneTree][Camera2D] Position queries") {
     mock_viewport->add_child(test_camera);
 	REQUIRE_MESSAGE(test_camera->is_current(), "Camera2D should be made current upon entering tree.");
 
-
 	memdelete(test_camera);
 	memdelete(mock_viewport);
 }

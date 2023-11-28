@@ -39,8 +39,34 @@
 
 namespace TestImageTexture {
 
-	const int default_width = 64;
 	const int default_height = 64;
+	const int default_width = 64;
+	const int default_channels = 3;
+	const Image::Format default_format = Image::Format::FORMAT_RGB8;
+
+	static Ref<Image> create_test_image_base(int p_channels, Image::Format p_format) {
+		Vector<uint8_t> data;
+		data.resize(default_width * default_height * p_channels);
+
+		// This loop fills the data with image pixel values (RGBA format).
+		for (int y = 0; y < default_height; y++) {
+			for (int x = 0; x < default_width; x++) {
+				int offset = (y * default_width + x) * p_channels;
+				for (int c = 0; c < p_channels; c++) {
+					data.set(offset + c, 255);
+				}
+			}
+		}
+
+		return Image::create_from_data(default_width, default_height, false, p_format, data);
+	}
+
+	static Ref<Image> create_test_image() {
+		return create_test_image_base(default_channels, default_format);
+	}
+
+	/*const int default_width = 64;
+	const int default_height = 64;*/
 	const bool use_mipmaps = false;
 
 	Ref<Image> create_empty_image()
@@ -63,6 +89,7 @@ namespace TestImageTexture {
 		CHECK_FALSE(imageTexture->has_alpha());
 	}
 
+	/*
 	TEST_CASE("[ImageTexture] TestImage 64x64") {
 		//Size2i taille(default_width, default_height);
 
@@ -85,5 +112,30 @@ namespace TestImageTexture {
 		CHECK(imageTexture->get_width() == 64);
 		CHECK(imageTexture->get_height() == 64);
 	}
+	*/
+
+	TEST_CASE("[ImageTexture] TestImage 64x64")
+	{
+	// Create an image for the texture.
+	Ref<Image> image = create_test_image();
+
+	// Create the image texture, initially as empty.
+	Ref<ImageTexture> imageTexture;
+	imageTexture.instantiate();
+
+	// Set the image on the image texture.
+	imageTexture->set_image(image);
+
+	// Ensure that the image texture is not null.
+	REQUIRE_FALSE(imageTexture.is_null());
+
+	// Check if the properties are initialized based on the image.
+	CHECK(imageTexture->get_width() == default_width);
+	CHECK(imageTexture->get_height() == default_width);
+	CHECK(imageTexture->get_format() == default_format);
+	CHECK_FALSE(imageTexture->has_alpha());
+	}
+
+
 }
 #endif // TEST_IMAGE_TEXTURE_H

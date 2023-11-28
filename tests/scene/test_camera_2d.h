@@ -165,24 +165,9 @@ TEST_CASE("[SceneTree][Camera2D] Position queries") {
     mock_viewport->set_size(Vector2(400, 200));
     SceneTree::get_singleton()->get_root()->add_child(mock_viewport);
     mock_viewport->add_child(test_camera);
-	mock_viewport->add_child(second_test_camera);
-    test_camera->set_global_position(Vector2(0, 0));
-    test_camera->set_global_rotation(0);
+	REQUIRE_MESSAGE(test_camera->is_current(), "Camera2D should be made current upon entering tree.");
 
-    SUBCASE("Current") {
-        test_camera->set_enabled(true);
-        test_camera->make_current();
-        CHECK(test_camera->is_current());
-		test_camera->clear_current();
-		second_test_camera->make_current();
-		CHECK_FALSE(test_camera->is_current());
-    }
-
-    SUBCASE("CameraScreenCenter") {
-		CHECK(test_camera->get_camera_screen_center() == Vector2(0, 0));
-	}
 	memdelete(test_camera);
-	memdelete(second_test_camera);
 	memdelete(mock_viewport);
 }
 

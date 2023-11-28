@@ -47,12 +47,14 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
 		test_camera->set_anchor_mode(Camera2D::AnchorMode::ANCHOR_MODE_DRAG_CENTER);
 		CHECK(test_camera->get_anchor_mode() == Camera2D::AnchorMode::ANCHOR_MODE_DRAG_CENTER);
 	}
+
 	SUBCASE("ProcessCallback") {
 		test_camera->set_process_callback(Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_PHYSICS);
 		CHECK(test_camera->get_process_callback() == Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_PHYSICS);
 		test_camera->set_process_callback(Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_IDLE);
 		CHECK(test_camera->get_process_callback() == Camera2D::Camera2DProcessCallback::CAMERA2D_PROCESS_IDLE);
 	}
+
 	SUBCASE("Drag") {
 		constexpr float drag_left_margin = 0.8f;
         constexpr float drag_top_margin = 0.8f;
@@ -87,6 +89,7 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
         test_camera->set_drag_vertical_offset(drag_vertical_offset2);
         CHECK(test_camera->get_drag_vertical_offset() == drag_vertical_offset2);
     }
+
     SUBCASE("Drawing") {
         test_camera->set_margin_drawing_enabled(true);
         CHECK(test_camera->is_margin_drawing_enabled());
@@ -101,12 +104,14 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
         test_camera->set_screen_drawing_enabled(false);
         CHECK_FALSE(test_camera->is_screen_drawing_enabled());
     }
+
     SUBCASE("Enabled") {
         test_camera->set_enabled(true);
         CHECK(test_camera->is_enabled());
         test_camera->set_enabled(false);
         CHECK_FALSE(test_camera->is_enabled());
     }
+
     SUBCASE("Rotation") {
         constexpr float rotation_smoothing_speed = 20.0f;
         test_camera->set_ignore_rotation(true);
@@ -118,16 +123,19 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
         test_camera->set_rotation_smoothing_speed(rotation_smoothing_speed);
         CHECK(test_camera->get_rotation_smoothing_speed() == rotation_smoothing_speed);
     }
+
     SUBCASE("Zoom") {
         const Vector2 zoom = Vector2(4, 4);
         test_camera->set_zoom(zoom);
         CHECK(test_camera->get_zoom() == zoom);
     }
+
     SUBCASE("Offset") {
         const Vector2 offset = Vector2(100, 100);
         test_camera->set_offset(offset);
         CHECK(test_camera->get_offset() == offset);
     }
+
     SUBCASE("Limit") {
         constexpr int limit_left = 100;
         constexpr int limit_top = 100;
@@ -145,8 +153,8 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
         CHECK(test_camera->get_limit(SIDE_RIGHT) == limit_right);
         test_camera->set_limit(SIDE_BOTTOM, limit_bottom);
         CHECK(test_camera->get_limit(SIDE_BOTTOM) == limit_bottom);
-
     }
+
     SUBCASE("Position") {
         constexpr float smoothing_speed = 20.0f;
         test_camera->set_position_smoothing_enabled(true);
@@ -160,12 +168,12 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
 
 TEST_CASE("[SceneTree][Camera2D] Position queries") {
     Camera2D *test_camera = memnew(Camera2D);
-	Camera2D *second_test_camera = memnew(Camera2D);
     SubViewport *mock_viewport = memnew(SubViewport);
     mock_viewport->set_size(Vector2(400, 200));
     SceneTree::get_singleton()->get_root()->add_child(mock_viewport);
     mock_viewport->add_child(test_camera);
 	REQUIRE_MESSAGE(test_camera->is_current(), "Camera2D should be made current upon entering tree.");
+
 
 	memdelete(test_camera);
 	memdelete(mock_viewport);

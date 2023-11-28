@@ -40,12 +40,14 @@ class SurfaceUpgradeTool : public Object {
 
 	static SurfaceUpgradeTool *singleton;
 
-	bool show_requested = false;
-	bool popped_up = false;
 	Mutex mutex;
+
+	bool show_requested = false;
+	bool updating = false;
 
 	static void _try_show_popup();
 	void _show_popup();
+
 	void _add_files(EditorFileSystemDirectory *p_dir, Vector<String> &r_reimport_paths, Vector<String> &r_resave_paths);
 
 protected:
@@ -64,4 +66,19 @@ public:
 	~SurfaceUpgradeTool();
 };
 
+<<<<<<< HEAD
+=======
+class SurfaceUpgradeDialog : public ConfirmationDialog {
+	GDCLASS(SurfaceUpgradeDialog, ConfirmationDialog);
+
+protected:
+	void _notification(int p_what);
+
+public:
+	void popup_on_demand();
+
+	SurfaceUpgradeDialog();
+};
+
+>>>>>>> fa4a65387ea41506ecc519fc61a06da110dce51c
 #endif // SURFACE_UPGRADE_TOOL_H

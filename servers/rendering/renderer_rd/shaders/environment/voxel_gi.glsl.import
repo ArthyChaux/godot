@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://f03hvrd80k4f"
+path="res://.godot/imported/voxel_gi.glsl-3d98ec7dab867791bfd2419a21111e3e.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/environment/voxel_gi.glsl"
+dest_files=["res://.godot/imported/voxel_gi.glsl-3d98ec7dab867791bfd2419a21111e3e.res"]
+
+[params]
+

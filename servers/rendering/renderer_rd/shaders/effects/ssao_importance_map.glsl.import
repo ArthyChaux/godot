@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://wu2hy5fb7nxq"
+path="res://.godot/imported/ssao_importance_map.glsl-fed282304df067e3d16de4731b963c53.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/effects/ssao_importance_map.glsl"
+dest_files=["res://.godot/imported/ssao_importance_map.glsl-fed282304df067e3d16de4731b963c53.res"]
+
+[params]
+

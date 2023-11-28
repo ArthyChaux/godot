@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://s177kv0er4at"
+path="res://.godot/imported/scene_forward_lights_inc.glsl-8489d6be3172fb13b622e776aaa75900.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/scene_forward_lights_inc.glsl"
+dest_files=["res://.godot/imported/scene_forward_lights_inc.glsl-8489d6be3172fb13b622e776aaa75900.res"]
+
+[params]
+

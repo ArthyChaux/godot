@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://c2hldej8u2ee4"
+path="res://.godot/imported/specular_merge.glsl-dfe1c28833acfdc048fe08e67cd51346.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/effects/specular_merge.glsl"
+dest_files=["res://.godot/imported/specular_merge.glsl-dfe1c28833acfdc048fe08e67cd51346.res"]
+
+[params]
+

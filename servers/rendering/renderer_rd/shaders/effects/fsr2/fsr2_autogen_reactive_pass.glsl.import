@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bmokjjdxyhsv8"
+path="res://.godot/imported/fsr2_autogen_reactive_pass.glsl-3a0987d3e8f8e3f053dda032969152e9.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/effects/fsr2/fsr2_autogen_reactive_pass.glsl"
+dest_files=["res://.godot/imported/fsr2_autogen_reactive_pass.glsl-3a0987d3e8f8e3f053dda032969152e9.res"]
+
+[params]
+

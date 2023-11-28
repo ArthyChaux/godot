@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dvp2ib7muq3sv"
+path="res://.godot/imported/ffx_fsr2_reconstruct_previous_depth_pass.glsl-accc568b2781de06379a2a6a0393f545.res"
+
+[deps]
+
+source_file="res://godot/thirdparty/amd-fsr2/shaders/ffx_fsr2_reconstruct_previous_depth_pass.glsl"
+dest_files=["res://.godot/imported/ffx_fsr2_reconstruct_previous_depth_pass.glsl-accc568b2781de06379a2a6a0393f545.res"]
+
+[params]
+

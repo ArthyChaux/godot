@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://df3l68tdkssfk"
+path="res://.godot/imported/sdfgi_preprocess.glsl-081afd5d00584df1449978fb10243caa.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/environment/sdfgi_preprocess.glsl"
+dest_files=["res://.godot/imported/sdfgi_preprocess.glsl-081afd5d00584df1449978fb10243caa.res"]
+
+[params]
+

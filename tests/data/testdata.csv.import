@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://f7ifhjm4fq8e"
+
+[deps]
+
+files=["res://godot/tests/data/testdata.Header 2.translation", "res://godot/tests/data/testdata.Header 3.translation", "res://godot/tests/data/testdata.Header 4.translation"]
+
+source_file="res://godot/tests/data/testdata.csv"
+dest_files=["res://godot/tests/data/testdata.Header 2.translation", "res://godot/tests/data/testdata.Header 3.translation", "res://godot/tests/data/testdata.Header 4.translation"]
+
+[params]
+
+compress=true
+delimiter=0

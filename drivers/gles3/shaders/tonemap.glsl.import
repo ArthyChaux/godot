@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dq1dog66am2uj"
+path="res://.godot/imported/tonemap.glsl-b708811b496bd784ee9720be011db2cf.res"
+
+[deps]
+
+source_file="res://godot/drivers/gles3/shaders/tonemap.glsl"
+dest_files=["res://.godot/imported/tonemap.glsl-b708811b496bd784ee9720be011db2cf.res"]
+
+[params]
+

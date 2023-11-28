@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://desh7o8qrk5qk"
+path="res://.godot/imported/lm_raster.glsl-5686216b7d9361bd5bd90beae475f9f0.res"
+
+[deps]
+
+source_file="res://godot/modules/lightmapper_rd/lm_raster.glsl"
+dest_files=["res://.godot/imported/lm_raster.glsl-5686216b7d9361bd5bd90beae475f9f0.res"]
+
+[params]
+

@@ -1041,11 +1041,6 @@ void EditorNode::_sources_changed(bool p_exist) {
 		// loading textures, as they are now properly imported.
 		RenderingServer::get_singleton()->global_shader_parameters_load_settings(true);
 
-		// Start preview thread now that it's safe.
-		if (!singleton->cmdline_export_mode) {
-			EditorResourcePreview::get_singleton()->start();
-		}
-
 		_load_editor_layout();
 
 		if (!defer_load_scene.is_empty()) {
@@ -1059,6 +1054,11 @@ void EditorNode::_sources_changed(bool p_exist) {
 
 		if (SurfaceUpgradeTool::get_singleton()->is_show_requested()) {
 			SurfaceUpgradeTool::get_singleton()->show_popup();
+		}
+
+		// Start preview thread now that it's safe.
+		if (!singleton->cmdline_export_mode) {
+			EditorResourcePreview::get_singleton()->start();
 		}
 	}
 }
@@ -1746,6 +1746,10 @@ static void _reset_animation_mixers(Node *p_node, List<Pair<AnimationMixer *, Re
 }
 
 void EditorNode::_save_scene(String p_file, int idx) {
+	if (!saving_scene.is_empty() && saving_scene == p_file) {
+		return;
+	}
+
 	Node *scene = editor_data.get_edited_scene_root(idx);
 
 	if (!scene) {
@@ -1802,7 +1806,9 @@ void EditorNode::_save_scene(String p_file, int idx) {
 	emit_signal(SNAME("scene_saved"), p_file);
 
 	_save_external_resources();
+	saving_scene = p_file; // Some editors may save scenes of built-in resources as external data, so avoid saving this scene again.
 	editor_data.save_editor_external_data();
+	saving_scene = "";
 
 	for (Pair<AnimationMixer *, Ref<AnimatedValuesBackup>> &E : anim_backups) {
 		E.first->restore(E.second);
@@ -3033,6 +3039,12 @@ void EditorNode::_tool_menu_option(int p_idx) {
 		case TOOLS_ORPHAN_RESOURCES: {
 			orphan_resources->show();
 		} break;
+<<<<<<< HEAD
+=======
+		case TOOLS_SURFACE_UPGRADE: {
+			surface_upgrade_dialog->popup_on_demand();
+		} break;
+>>>>>>> fa4a65387ea41506ecc519fc61a06da110dce51c
 		case TOOLS_CUSTOM: {
 			if (tool_menu->get_item_submenu(p_idx) == "") {
 				Callable callback = tool_menu->get_item_metadata(p_idx);

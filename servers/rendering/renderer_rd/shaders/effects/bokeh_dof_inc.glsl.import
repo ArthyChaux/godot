@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dly6lunmcnlu2"
+path="res://.godot/imported/bokeh_dof_inc.glsl-e8c848fd4250d19c91dbadf731ad6f8d.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/effects/bokeh_dof_inc.glsl"
+dest_files=["res://.godot/imported/bokeh_dof_inc.glsl-e8c848fd4250d19c91dbadf731ad6f8d.res"]
+
+[params]
+

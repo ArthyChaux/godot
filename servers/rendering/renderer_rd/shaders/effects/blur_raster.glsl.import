@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://ccvc3huwgf0w7"
+path="res://.godot/imported/blur_raster.glsl-e1223d74ceeb12ec1c546785102ac95f.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/effects/blur_raster.glsl"
+dest_files=["res://.godot/imported/blur_raster.glsl-e1223d74ceeb12ec1c546785102ac95f.res"]
+
+[params]
+

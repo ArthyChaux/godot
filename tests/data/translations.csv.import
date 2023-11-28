@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://fewe8r0nil8n"
+
+[deps]
+
+files=["res://godot/tests/data/translations.en.translation", "res://godot/tests/data/translations.de.translation", "res://godot/tests/data/translations.ja.translation", "res://godot/tests/data/translations.fa.translation"]
+
+source_file="res://godot/tests/data/translations.csv"
+dest_files=["res://godot/tests/data/translations.en.translation", "res://godot/tests/data/translations.de.translation", "res://godot/tests/data/translations.ja.translation", "res://godot/tests/data/translations.fa.translation"]
+
+[params]
+
+compress=true
+delimiter=0

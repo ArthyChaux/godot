@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://b8525an0v5ndr"
+path="res://.godot/imported/ssao_interleave.glsl-a3b62a6266aae580637950b35d340f8c.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/effects/ssao_interleave.glsl"
+dest_files=["res://.godot/imported/ssao_interleave.glsl-a3b62a6266aae580637950b35d340f8c.res"]
+
+[params]
+

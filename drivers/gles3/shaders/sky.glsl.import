@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://5kwrcnr7jgkj"
+path="res://.godot/imported/sky.glsl-08d46f1e4222b4e675bd950639531951.res"
+
+[deps]
+
+source_file="res://godot/drivers/gles3/shaders/sky.glsl"
+dest_files=["res://.godot/imported/sky.glsl-08d46f1e4222b4e675bd950639531951.res"]
+
+[params]
+

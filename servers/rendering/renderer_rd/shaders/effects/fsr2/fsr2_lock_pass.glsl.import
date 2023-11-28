@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://clu7f5bdxw6un"
+path="res://.godot/imported/fsr2_lock_pass.glsl-d64caeaf63609488b1cd627b61e58942.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/effects/fsr2/fsr2_lock_pass.glsl"
+dest_files=["res://.godot/imported/fsr2_lock_pass.glsl-d64caeaf63609488b1cd627b61e58942.res"]
+
+[params]
+

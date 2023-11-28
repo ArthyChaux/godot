@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://lbv4keu1djgq"
+path="res://.godot/imported/scene_forward_mobile.glsl-4d2aa70f1358185bf03a321bc01ab558.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/forward_mobile/scene_forward_mobile.glsl"
+dest_files=["res://.godot/imported/scene_forward_mobile.glsl-4d2aa70f1358185bf03a321bc01ab558.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://c1t3nkem03d7d"
+path="res://.godot/imported/fsr2_accumulate_pass.glsl-ee545915a2cb01ab81eb2952c666491b.res"
+
+[deps]
+
+source_file="res://godot/servers/rendering/renderer_rd/shaders/effects/fsr2/fsr2_accumulate_pass.glsl"
+dest_files=["res://.godot/imported/fsr2_accumulate_pass.glsl-ee545915a2cb01ab81eb2952c666491b.res"]
+
+[params]
+

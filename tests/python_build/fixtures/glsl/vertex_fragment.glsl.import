@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bo8wct22lwixx"
+path="res://.godot/imported/vertex_fragment.glsl-1ab7202265b7deb7ee3f83bac31588c8.res"
+
+[deps]
+
+source_file="res://godot/tests/python_build/fixtures/glsl/vertex_fragment.glsl"
+dest_files=["res://.godot/imported/vertex_fragment.glsl-1ab7202265b7deb7ee3f83bac31588c8.res"]
+
+[params]
+

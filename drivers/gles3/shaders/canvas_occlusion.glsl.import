@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bge6mecptykfx"
+path="res://.godot/imported/canvas_occlusion.glsl-c71aa0f8cf1d2d20a59ef59ef6cbe62a.res"
+
+[deps]
+
+source_file="res://godot/drivers/gles3/shaders/canvas_occlusion.glsl"
+dest_files=["res://.godot/imported/canvas_occlusion.glsl-c71aa0f8cf1d2d20a59ef59ef6cbe62a.res"]
+
+[params]
+

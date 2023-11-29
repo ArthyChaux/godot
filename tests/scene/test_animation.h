@@ -32,6 +32,7 @@
 #define TEST_ANIMATION_H
 
 #include "scene/resources/animation.h"
+#include "servers/audio/audio_stream.h"
 
 #include "tests/test_macros.h"
 
@@ -311,17 +312,19 @@ TEST_CASE("[Animation] Create Bezier track") {
 
 } // namespace TestAnimation
 
-TEST_CASE("[Animation] Create audio track"){
+TEST_CASE("[SceneTree][Animation] Create audio track"){
 	Ref<Animation> animation = memnew(Animation);
 	const int track_index = animation->add_track(Animation::TYPE_AUDIO);
 	animation->track_set_path(track_index, NodePath("Enemy:audio"));
+
+	Ref<AudioStream> stream = memnew(AudioStream);
 	
-	const int key = animation->audio_track_insert_key(track_index, 0.171,"/home/antoine/Downloads/sound1.mp3");
+	const int key = animation->audio_track_insert_key(track_index, 0.171, stream);
 
 	//TEST
 
-	CHECK(animation->audio_track_set_key_stream(track_index, key, "/home/antoine/Downloads/sound2.mp3") == OK);
-	CHECK(animation->audio_track_get_key_stream(track_index, key) == "/home/antoine/Downloads/sound2.mp3");
+	CHECK(animation->audio_track_set_key_stream(track_index, key, stream) == OK);
+	CHECK(animation->audio_track_get_key_stream(track_index, key) == stream);
 	
 	CHECK(animation->audio_track_set_key_start_offset(track_index, key, 0.150) == OK);
 	CHECK(animation->audio_track_get_key_start_offset(track_index, key) == 0.150);

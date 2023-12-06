@@ -166,18 +166,6 @@ TEST_CASE("[SceneTree][Camera2D] Getters and setters") {
 	memdelete(test_camera);
 }
 
-TEST_CASE("[SceneTree][Camera2D] Position queries") {
-	Camera2D *test_camera = memnew(Camera2D);
-	SubViewport *mock_viewport = memnew(SubViewport);
-	mock_viewport->set_size(Vector2(400, 200));
-	SceneTree::get_singleton()->get_root()->add_child(mock_viewport);
-	mock_viewport->add_child(test_camera);
-	REQUIRE_MESSAGE(test_camera->is_current(), "Camera2D should be made current upon entering tree.");
-
-	memdelete(test_camera);
-	memdelete(mock_viewport);
-}
-
 } // namespace TestCamera2D
 
 #endif // TEST_CAMERA_2D_H

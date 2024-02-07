@@ -117,29 +117,28 @@ class GDScript : public Script {
 
 	HashMap<GDScriptFunction *, LambdaInfo> lambda_info;
 
+public:
+	class UpdatableFuncPtr {
+		friend class GDScript;
+
+		GDScriptFunction *ptr = nullptr;
+		GDScript *script = nullptr;
+		List<UpdatableFuncPtr *>::Element *list_element = nullptr;
+
+	public:
+		GDScriptFunction *operator->() const { return ptr; }
+		operator GDScriptFunction *() const { return ptr; }
+
+		UpdatableFuncPtr(GDScriptFunction *p_function);
+		~UpdatableFuncPtr();
+	};
+
+private:
 	// List is used here because a ptr to elements are stored, so the memory locations need to be stable
-	struct UpdatableFuncPtr {
-		List<GDScriptFunction **> ptrs;
-		Mutex mutex;
-		bool initialized : 1;
-		bool transferred : 1;
-		uint32_t rc = 1;
-		UpdatableFuncPtr() :
-				initialized(false), transferred(false) {}
-	};
-	struct UpdatableFuncPtrElement {
-		List<GDScriptFunction **>::Element *element = nullptr;
-		UpdatableFuncPtr *func_ptr = nullptr;
-	};
-	static UpdatableFuncPtr func_ptrs_to_update_main_thread;
-	static thread_local UpdatableFuncPtr *func_ptrs_to_update_thread_local;
 	List<UpdatableFuncPtr *> func_ptrs_to_update;
 	Mutex func_ptrs_to_update_mutex;
 
-	UpdatableFuncPtrElement _add_func_ptr_to_update(GDScriptFunction **p_func_ptr_ptr);
-	static void _remove_func_ptr_to_update(const UpdatableFuncPtrElement &p_func_ptr_element);
-
-	static void _fixup_thread_function_bookkeeping();
+	void _recurse_replace_function_ptrs(const HashMap<GDScriptFunction *, GDScriptFunction *> &p_replacements) const;
 
 #ifdef TOOLS_ENABLED
 	// For static data storage during hot-reloading.
@@ -254,7 +253,7 @@ public:
 	const Ref<GDScriptNativeClass> &get_native() const { return native; }
 
 	RBSet<GDScript *> get_dependencies();
-	RBSet<GDScript *> get_inverted_dependencies();
+	HashMap<GDScript *, RBSet<GDScript *>> get_all_dependencies();
 	RBSet<GDScript *> get_must_clear_dependencies();
 
 	virtual bool has_script_signal(const StringName &p_signal) const override;
@@ -439,6 +438,7 @@ class GDScriptLanguage : public ScriptLanguage {
 
 	SelfList<GDScriptFunction>::List function_list;
 	bool profiling;
+	bool profile_native_calls;
 	uint64_t script_frame_time;
 
 	HashMap<String, ObjectID> orphan_subclasses;
@@ -540,7 +540,7 @@ public:
 	virtual void get_string_delimiters(List<String> *p_delimiters) const override;
 	virtual bool is_using_templates() override;
 	virtual Ref<Script> make_template(const String &p_template, const String &p_class_name, const String &p_base_class_name) const override;
-	virtual Vector<ScriptTemplate> get_built_in_templates(StringName p_object) override;
+	virtual Vector<ScriptTemplate> get_built_in_templates(const StringName &p_object) override;
 	virtual bool validate(const String &p_script, const String &p_path = "", List<String> *r_functions = nullptr, List<ScriptLanguage::ScriptError> *r_errors = nullptr, List<ScriptLanguage::Warning> *r_warnings = nullptr, HashSet<int> *r_safe_lines = nullptr) const override;
 	virtual Script *create_script() const override;
 #ifndef DISABLE_DEPRECATED
@@ -561,11 +561,6 @@ public:
 	virtual void add_named_global_constant(const StringName &p_name, const Variant &p_value) override;
 	virtual void remove_named_global_constant(const StringName &p_name) override;
 
-	/* MULTITHREAD FUNCTIONS */
-
-	virtual void thread_enter() override;
-	virtual void thread_exit() override;
-
 	/* DEBUGGER FUNCTIONS */
 
 	virtual String debug_get_error() const override;
@@ -580,6 +575,7 @@ public:
 	virtual String debug_parse_stack_level_expression(int p_level, const String &p_expression, int p_max_subitems = -1, int p_max_depth = -1) override;
 
 	virtual void reload_all_scripts() override;
+	virtual void reload_scripts(const Array &p_scripts, bool p_soft_reload) override;
 	virtual void reload_tool_script(const Ref<Script> &p_script, bool p_soft_reload) override;
 
 	virtual void frame() override;
@@ -590,6 +586,8 @@ public:
 
 	virtual void profiling_start() override;
 	virtual void profiling_stop() override;
+	virtual void profiling_set_save_native_calls(bool p_enable) override;
+	void profiling_collate_native_call_data(bool p_accumulated);
 
 	virtual int profiling_get_accumulated_data(ProfilingInfo *p_info_arr, int p_info_max) override;
 	virtual int profiling_get_frame_data(ProfilingInfo *p_info_arr, int p_info_max) override;
